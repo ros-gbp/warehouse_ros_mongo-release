@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.0.2)
 project(warehouse_ros_mongo)
 
 add_compile_options(-std=c++11)
@@ -23,7 +23,9 @@ if (CMAKE_COMPILER_IS_GNUCC)
   add_compile_options(-O1)
 endif()
 
-if(EXISTS "${MongoDB_INCLUDE_DIR}/mongo/version.h")
+include(CheckIncludeFileCXX)
+check_include_file_cxx("mongo/version.h" HAVE_MONGO_VERSION_H)
+if(HAVE_MONGO_VERSION_H)
   add_definitions(-DWAREHOUSE_ROS_MONGO_HAVE_MONGO_VERSION_H)
 endif()
 
@@ -64,7 +66,7 @@ if(CATKIN_ENABLE_TESTING)
   add_rostest(test/warehouse_ros_mongo.test)
 endif()
 
-install(PROGRAMS scripts/mongo_wrapper_ros.py DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+catkin_install_python(PROGRAMS scripts/mongo_wrapper_ros.py DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
 install(TARGETS ${PROJECT_NAME} LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION})
 
