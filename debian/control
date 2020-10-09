@@ -1,0 +1,12 @@
+Source: ros-noetic-warehouse-ros-mongo
+Section: misc
+Priority: optional
+Maintainer: MoveIt Release Team <moveit_releasers@googlegroups.com>
+Build-Depends: debhelper (>= 9.0.0), libmongoclient-dev, mongodb, ros-noetic-catkin, ros-noetic-class-loader, ros-noetic-roscpp, ros-noetic-rostest, ros-noetic-rostime, ros-noetic-std-msgs, ros-noetic-warehouse-ros
+Homepage: http://ros.org/wiki/warehouse_ros
+Standards-Version: 3.9.2
+
+Package: ros-noetic-warehouse-ros-mongo
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-noetic-class-loader, ros-noetic-roscpp, ros-noetic-rostime, ros-noetic-std-msgs, ros-noetic-warehouse-ros
+Description: Implementation of warehouse_ros for MongoDB
